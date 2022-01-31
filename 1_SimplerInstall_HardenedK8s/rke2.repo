@@ -1,0 +1,13 @@
+[rancher-rke2-common-latest]
+name=Rancher RKE2 Common Latest
+baseurl=https://rpm.rancher.io/rke2/latest/common/centos/8/noarch
+enabled=1
+gpgcheck=1
+gpgkey=https://rpm.rancher.io/public.key
+
+[rancher-rke2-1-20-latest]
+name=Rancher RKE2 1.20 Latest
+baseurl=https://rpm.rancher.io/rke2/latest/1.20/centos/8/x86_64
+enabled=1
+gpgcheck=1
+gpgkey=https://rpm.rancher.io/public.key

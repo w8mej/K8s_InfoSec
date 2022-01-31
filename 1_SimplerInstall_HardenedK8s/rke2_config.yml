@@ -1,0 +1,16 @@
+write-kubeconfig-mode: "0644"
+profile: "cis-1.5"
+selinux: true
+# add ips/hostname of hosts and loadbalancer
+tls-san:
+  - "datafabric.haxx.ninja"
+  - "192.168.3.3"
+# Make a etcd snapshot every 6 hours
+etcd-snapshot-schedule-cron: " */6 * * *"
+# Keep 56 etcd snapshorts (equals to 2 weeks with 6 a day)
+etcd-snapshot-retention: 56
+cni:
+  - cilium
+disable:
+  - rke2-canal
+  - rke2-kube-proxy
