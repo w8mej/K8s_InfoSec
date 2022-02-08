@@ -1,0 +1,23 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+- role: control-plane
+  kubeadmConfigPatches:
+  - |
+    kind: ClusterConfiguration
+    apiServer:
+        # enable admission-control-config flag on the API server
+        extraArgs:
+          admission-control-config-file: /etc/kubernetes/policies/pod-security.yaml
+        # mount new file / directories on the control plane
+        extraVolumes:
+          - name: policies
+            hostPath: /etc/kubernetes/policies
+            mountPath: /etc/kubernetes/policies
+            readOnly: true
+            pathType: "DirectoryOrCreate"    
+  # mount the local file on the control plane
+  extraMounts:
+  - hostPath: ./pod-security.yaml
+    containerPath: /etc/kubernetes/policies/pod-security.yaml
+    readOnly: true
