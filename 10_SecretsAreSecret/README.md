@@ -89,5 +89,32 @@ vault write auth/kubernetes/role/helloworld bound_service_account_names=hellowor
 ```
 
 ### Vault Agent Injector / Sidecar Init Container
+The Vault Agent Injector alters pod specifications to include Vault Agent containers that render Vault secrets to a shared memory volume using Vault Agent Templates. By rendering secrets to a shared volume, containers within the pod can consume Vault secrets without being Vault aware.  The injector is a Kubernetes Mutation Webhook Controller. The controller intercepts pod events and applies mutations to the pod if annotations exist within the request. This functionality is provided by the vault-k8s project and can be automatically installed and configured using the Vault Helm chart.
+
+The Vault Agent Injector works by intercepting pod CREATE and UPDATE events in Kubernetes. The controller parses the event and looks for the metadata annotation vault.hashicorp.com/agent-inject: true. If found, the controller will alter the pod specification based on other annotations present.  At a minimum, every container in the pod will be configured to mount a shared memory volume. This volume is mounted to /vault/secrets and will be used by the Vault Agent containers for sharing secrets with the other containers in the pod.  Next, two types of Vault Agent containers can be injected: init and sidecar. The init container will prepopulate the shared memory volume with the requested secrets prior to the other containers starting. The sidecar container will continue to authenticate and render secrets to the same location as the pod runs. Using annotations, the initialization and sidecar containers may be disabled.  Last, two additional types of volumes can be optionally mounted to the Vault Agent containers. The first is secret volume containing TLS requirements such as client and CA (certificate authority) certificates and keys. This volume is useful when communicating and verifying the Vault server's authenticity using TLS. The second is a configuration map containing Vault Agent configuration files. This volume is useful to customize Vault Agent beyond what the provided annotations offer.
+
+The primary method of authentication with Vault when using the Vault Agent Injector is the service account attached to the pod. Other authentication methods can be configured using annotations.  For Kubernetes authentication, the service account must be bound to a Vault role and a policy granting access to the secrets desired.  A service account must be present to use the Vault Agent Injector with the Kubernetes authentication method. It is not recommended to bind Vault roles to the default service account provided to pods if no service account is defined.
+
+Installation is as simple as 
+```
+helm install vault hashicorp/vault --set "injector.externalVaultAddr=http://$EXTERNAL_VAULT_ADDR:8200"
+```
+
+
+
+# Deploying Hello World
+It is simple as deploying the workload and its' sidecar container
+```
+kubectl apply -f helloworld.yml
+```
+
+Then verify the secrets and everything looks ok
+
+```
+kubectl exec $(kubectl get pod -l app=orgchart -o jsonpath="{.items[0].metadata.name}") --container hello -- cat /vault/secrets/config.txt
+```
+
+
+Enjoy.  As mentioned above, the exercise to secure Vault or to use native Kubernete's secrets management backed by Vault are exercises for the reader to learn and apply.
 
 
