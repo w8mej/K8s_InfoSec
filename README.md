@@ -12,19 +12,19 @@
 
 <p align="center">
   <a href="#intro">Introduction</a> •
-  <a href="#harder">Hand Holding Kubernetes Hardening</a> •
-  <a href="#hardener">Simpler Hardening</a> •
-  <a href="#x509">TLS Certification Rotation</a> •
-  <a href="#seccomp">Linux Kernel Filtering</a> •
-  <a href="#podsec">Pod Security</a>
+  <a href="#hand-holding-kubernetes-hardening">Hand Holding Kubernetes Hardening</a> •
+  <a href="#simpler-hardening">Simpler Hardening</a> •
+  <a href="#tls-certification-rotation">TLS Certification Rotation</a> •
+  <a href="#linux-kernel-filtering">Linux Kernel Filtering</a> •
+  <a href="#pod-security">Pod Security</a>
   <a href="#netsec">NetSec</a>
   <a href="#cluster">Cluster</a>
-  <a href="#admission">Admission Controller</a>
-  <a href="#integrity">Workload Integrity</a>
+  <a href="#admission-controller">Admission Controller</a>
+  <a href="#workload-integrity">Workload Integrity</a>
   <a href="#backups">Backups</a>
   <a href="#secrets">Secrets</a>
-  <a href="#gvisor">Isolated Kernel</a>
-  <a href="#image">Image Pulling</a>
+  <a href="#isolated-kernel">Isolated Kernel</a>
+  <a href="#image-pulling">Image Pulling</a>
 
 </p>
 
