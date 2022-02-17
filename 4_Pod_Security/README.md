@@ -34,7 +34,8 @@ warn — Violations will send a warning message back to the user, but don’t af
 
 
 ### Example namespace policy deployed
-```kubectl create ns verify-pod-security
+```
+kubectl create ns verify-pod-security
 kubens verify-pod-security
 
 #### enforces a "restricted" security policy and audits on restricted
@@ -44,6 +45,7 @@ kubectl label --overwrite ns verify-pod-security \
 ```
 
 ### Atttempt to fail deploying a privileged (restricted above) compute workload
+```
 cat <<EOF | kubectl -n verify-pod-security apply -f -
 apiVersion: v1
 kind: Pod
@@ -59,10 +61,11 @@ spec:
     securityContext:
       allowPrivilegeEscalation: true
 EOF
-
+```
 
 Observe the failed response.  Now try with the accepted privileges on the compute workload
-```kubectl label --overwrite ns verify-pod-security \
+```
+kubectl label --overwrite ns verify-pod-security \
   pod-security.kubernetes.io/enforce=privileged \
   pod-security.kubernetes.io/warn=baseline \
   pod-security.kubernetes.io/audit=baseline
@@ -71,9 +74,12 @@ Observe the failed response.  Now try with the accepted privileges on the comput
 
 ## Another lever to apply policies - clusterwide
 Instead of deploying just to the namespace, one is able to apply pod security policies clusterwide.
-```kind create cluster --image kindest/node:v1.23.0 --config kind-config.yaml && kubectl cluster-info --context kind-kind && kubectx kind-kind
+```
+kind create cluster --image kindest/node:v1.23.0 --config kind-config.yaml && kubectl cluster-info --context kind-kind && kubectx kind-kind
+```
 
 ### Create a test namespace and attempt to deploy a highly privileged compute workload.  Observe the failure.
+```
 kubectl create namespace test-defaults
 namespace/test-defaults created
 
@@ -102,11 +108,11 @@ spec:
     securityContext:
       allowPrivilegeEscalation: true
 EOF
-
+```
 Observe the metrics reporting endpoint measuring the failures
+```
 kubectl get --raw /metrics | grep pod_security_evaluations_total
-
-# HELP pod_security_evaluations_total [ALPHA] Number of policy evaluations that occurred, not counting ignored or exempt requests.
+HELP pod_security_evaluations_total [ALPHA] Number of policy evaluations that occurred, not counting ignored or exempt requests.
 # TYPE pod_security_evaluations_total counter
 pod_security_evaluations_total{decision="allow",mode="enforce",policy_level="baseline",policy_version="latest",request_operation="create",resource="pod",subresource=""} 2
 pod_security_evaluations_total{decision="allow",mode="enforce",policy_level="privileged",policy_version="latest",request_operation="create",resource="pod",subresource=""} 0
