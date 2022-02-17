@@ -16,15 +16,15 @@
   <a href="#simpler-hardening">Simpler Hardening</a> •
   <a href="#tls-certification-rotation">TLS Certification Rotation</a> •
   <a href="#linux-kernel-filtering">Linux Kernel Filtering</a> •
-  <a href="#pod-security">Pod Security</a>
-  <a href="#netsec">NetSec</a>
-  <a href="#cluster">Cluster</a>
-  <a href="#admission-controller">Admission Controller</a>
-  <a href="#workload-integrity">Workload Integrity</a>
-  <a href="#backups">Backups</a>
-  <a href="#secrets">Secrets</a>
-  <a href="#isolated-kernel">Isolated Kernel</a>
-  <a href="#image-pulling">Image Pulling</a>
+  <a href="#pod-security">Pod Security</a> •
+  <a href="#netsec">NetSec</a> •
+  <a href="#cluster">Cluster</a> •
+  <a href="#admission-controller">Admission Controller</a> •
+  <a href="#workload-integrity">Workload Integrity</a> •
+  <a href="#backups">Backups</a> •
+  <a href="#secrets">Secrets</a> •
+  <a href="#isolated-kernel">Isolated Kernel</a> •
+  <a href="#image-pulling">Image Pulling</a> 
 
 </p>
 
