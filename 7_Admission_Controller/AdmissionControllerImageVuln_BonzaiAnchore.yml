@@ -1,0 +1,56 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: securty-system
+---
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: anchore-enginn
+  namespace: kube-system
+spec:
+  repo: "https://charts.anchore.io"
+  chart: anchore-engine
+  targetNamespace: securty-system
+  valuesContent: |-
+     postgresql:
+       postgresPassword: {postgres} 
+       persistence:
+         size: 10Gi
+     anchoreGlobal:
+       defaultAdminPassword: {anchoregod}
+       defaultAdminEmail: auditing@haxx.ninja     
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: psp-rolebinding-securty-system
+  namespace: securty-system
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system-unrestricted-psp-role
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: Group
+  name: system:serviceaccounts
+---
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: anchore-policy-validator
+  namespace: kube-system
+spec:
+  repo: "https://kubernetes-charts.banzaicloud.com"
+  chart: anchore-policy-validator
+  targetNamespace: securty-system
+  valuesContent: |-
+    externalAnchore:
+      anchoreHost: "https://anchore-engine-anchore-engine-api:8228/v1/"
+      anchoreUser: {bonzaianchore}
+      anchorePass: {bonzaianchoresecret}
+    rbac:
+      psp:
+        enabled: true
+    createPolicies: true 

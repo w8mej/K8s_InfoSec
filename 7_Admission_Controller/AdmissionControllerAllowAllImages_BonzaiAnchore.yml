@@ -1,0 +1,7 @@
+apiVersion: security.banzaicloud.com/v1alpha1
+kind:  WhiteListItem
+metadata:
+  name: busybox1
+spec:
+  reason: testing
+  creator: sephiroth
