@@ -1,7 +1,7 @@
 # GVisor or yet another isolated kernel
 Now back to doing security for security sake.  In this case, the ring OS security model leaves much to be desired when one would prefer their workloads to have hardware and OS-level assurances via novel labeling and isolation which contain the effects of exploitable software flaws, including inter-process communication and system-wide information flow.  Either by a new event process abstraction via lightweight, isolated contexts within a single process or similar techniques.
 
-[GVisor Kubernetes security](GVisor.png)
+ <a href="https://k8s.haxx.ninja"><img src="https://github.com/cloudsriseup/K8s_InfoSec/raw/main/11_GVisorKernel/GVisor.png" alt="Cloudsriseup k8s GVisor" width="200"></a>
 
 ## Background
 gVisor is an application kernel, written in Go, that implements a substantial portion of the Linux system surface. It includes an Open Container Initiative (OCI) runtime called runsc that provides an isolation boundary between the application and the host kernel. The runsc runtime integrates with Docker and Kubernetes, making it simple to run sandboxed containers.
