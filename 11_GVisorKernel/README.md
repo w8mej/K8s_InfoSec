@@ -1,5 +1,5 @@
 # GVisor or yet another isolated kernel
-Now back to doing security for security sake.  In this case, the ring OS security model leaves much to be desired when one would prefer their workloads to have hardware and OS-level assurances via novel labeling and isolation which contain the effects of exploitable software flaws, including inter-process communication and system-wide information flow.  Either by a new event process abstraction via lightweight, isolated contexts w ithin a single process or other similar techniques.
+Now back to doing security for security sake.  In this case, the ring OS security model leaves much to be desired when one would prefer their workloads to have hardware and OS-level assurances via novel labeling and isolation which contain the effects of exploitable software flaws, including inter-process communication and system-wide information flow.  Either by a new event process abstraction via lightweight, isolated contexts within a single process or similar techniques.
 
 [GVisor Kubernetes security](GVisor.png)
 
