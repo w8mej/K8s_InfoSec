@@ -82,6 +82,6 @@ kubectl patch serviceaccount default \
   -n <your-namespace>
 ```
 
-[imagepuller](https://github.com/cloudsriseup/K8s_InfoSec/raw/main/11_GVisorKernel/GVisor.png)
+ <a href="https://k8s.haxx.ninja"><img src="https://github.com/cloudsriseup/K8s_InfoSec/raw/main/12_PullingImages/ImagePuller.png" alt="Cloudsriseup k8s image signing" width="600"></a>
 
 
