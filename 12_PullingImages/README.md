@@ -82,6 +82,6 @@ kubectl patch serviceaccount default \
   -n <your-namespace>
 ```
 
-[imagepuller](ImagePuller.png)
+[imagepuller](https://github.com/cloudsriseup/K8s_InfoSec/raw/main/11_GVisorKernel/GVisor.png)
 
 
