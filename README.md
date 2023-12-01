@@ -1,7 +1,7 @@
 
 <h1 align="center">
   <br>
-  <a href="https://k8s.haxx.ninja"><img src="https://github.com/cloudsriseup/Kubernetes_Security_Basics_Walkthrough/raw/main/images/logo.jpg" alt="Kubernetes Security Walkthrough" width="200"></a>
+  <a href="https://k8s.haxx.ninja"><img src="https://github.com/w8mej/Kubernetes_Security_Basics_Walkthrough/raw/main/images/logo.jpg" alt="Kubernetes Security Walkthrough" width="200"></a>
   <br>
   Kubernetes Security Extravanganza
   <br>
