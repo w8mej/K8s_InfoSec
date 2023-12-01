@@ -108,9 +108,8 @@ Or why DockerHub had to make money
 ## License
 
 MIT
-
 ---
 
 > [k8s.haxx.ninja](https://k8s.haxx.ninja) &nbsp;&middot;&nbsp;
-> GitHub [@cloudsriseup](https://github.com/cloudsriseup) &nbsp;&middot;&nbsp;
-> Keyoxide [John Menerick](https://keyoxide.org/34904984AC278D90AB17FCF599519FE194F7637A)
+> GitHub [@w8mej](https://github.com/w8mej) &nbsp;&middot;&nbsp;
+> Keyoxide [John Menerick](https://keyoxide.org/hkp/sephiroth@haxx.ninja)
