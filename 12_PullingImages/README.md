@@ -82,6 +82,6 @@ kubectl patch serviceaccount default \
   -n <your-namespace>
 ```
 
- <a href="https://k8s.haxx.ninja"><img src="https://github.com/cloudsriseup/K8s_InfoSec/raw/main/12_PullingImages/ImagePuller.png" alt="Cloudsriseup k8s image signing" width="600"></a>
+ <a href="https://k8s.haxx.ninja"><img src="https://github.com/w8mej/K8s_InfoSec/raw/main/12_PullingImages/ImagePuller.png" alt="w8mej k8s image signing" width="600"></a>
 
 
